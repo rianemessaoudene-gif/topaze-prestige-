@@ -7,10 +7,10 @@
    parKm         : € par kilomètre
    minimum       : prix minimum d'une course */
 const TARIFS = {
-  "berline-affaires": { priseEnCharge: 20, parKm: 2.2, minimum: 45 },
-  "berline-prestige": { priseEnCharge: 30, parKm: 3.0, minimum: 70 },
-  "van-premium":      { priseEnCharge: 25, parKm: 2.8, minimum: 60 },
-  "suv-prestige":     { priseEnCharge: 30, parKm: 3.2, minimum: 75 },
+  "bmw-serie-7":       { priseEnCharge: 30, parKm: 3.0, minimum: 70 },
+  "mercedes-classe-v": { priseEnCharge: 25, parKm: 2.8, minimum: 65 },
+  "sprinter-vip":      { priseEnCharge: 40, parKm: 3.5, minimum: 100 },
+  "gold-wing":         { priseEnCharge: 20, parKm: 2.0, minimum: 40 },
 };
 
 /* ── Navigation ── */
@@ -42,6 +42,10 @@ const estimateValue = document.getElementById("estimateValue");
 const confirmBox = document.getElementById("bookingConfirm");
 
 function updateEstimate() {
+  if (vehiculeSelect.value === "autre") {
+    estimateValue.textContent = "Sur devis";
+    return;
+  }
   const tarif = TARIFS[vehiculeSelect.value];
   const km = parseFloat(distanceInput.value);
   if (!tarif || !km || km <= 0) {
@@ -84,7 +88,7 @@ form.addEventListener("submit", (e) => {
   confirmBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
   window.location.href =
-    "mailto:contact@topaze-prestige.fr" +
+    "mailto:topazeprestige@gmail.com" +
     "?subject=" + encodeURIComponent("Réservation VTC — Topaze Prestige") +
     "&body=" + encodeURIComponent(lignes.join("\n"));
 });
@@ -95,6 +99,14 @@ document.querySelectorAll("[data-select]").forEach((btn) => {
     vehiculeSelect.value = btn.dataset.select;
     updateEstimate();
   });
+});
+
+/* ── Photos des véhicules : affichées si présentes dans assets/flotte/ ── */
+document.querySelectorAll(".car-card__photo").forEach((img) => {
+  const activate = () => img.closest(".car-card").classList.add("car-card--has-photo");
+  img.addEventListener("load", activate);
+  img.addEventListener("error", () => img.remove());
+  if (img.complete && img.naturalWidth > 0) activate();
 });
 
 /* ── Photo chauffeur : locale → Unsplash → placeholder ── */

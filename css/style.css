@@ -403,13 +403,44 @@ body {
   padding: 6px 12px; border-radius: 999px;
 }
 
+.car-card__flag--dark {
+  background: rgba(6, 6, 10, 0.8);
+  color: var(--or);
+  border: 1px solid var(--glass-border);
+}
+
 .car-card__visual {
-  padding: 34px 24px 10px;
+  position: relative;
+  padding: 26px 20px 6px;
   background:
     radial-gradient(ellipse 70% 60% at 50% 100%, rgba(212, 175, 55, 0.12), transparent 70%);
 }
 
+/* Photo réelle du véhicule : affichée automatiquement si le fichier existe
+   dans assets/flotte/, sinon le visuel doré prend le relais */
+.car-card__photo {
+  display: none;
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+  border-radius: 12px;
+  filter: grayscale(15%) contrast(1.08) brightness(0.92);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.car-card--has-photo .car-card__photo { display: block; }
+.car-card--has-photo .car-svg { display: none; }
+
 .car-svg { width: 100%; height: auto; display: block; }
+
+.car-spot { fill: rgba(212, 175, 55, 0.1); }
+.car-window { fill: none; stroke: rgba(245, 215, 110, 0.55); stroke-width: 1.4; }
+.car-grille { fill: none; stroke: var(--or); stroke-width: 1.6; }
+
+.car-light {
+  fill: var(--or-clair);
+  filter: drop-shadow(0 0 5px rgba(245, 215, 110, 0.9));
+}
+
+.car-light--dim { fill: var(--or-sombre); filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5)); }
 
 .car-body {
   fill: none; stroke: var(--or); stroke-width: 2;
@@ -456,10 +487,24 @@ body {
 
 .car-card .btn { margin-top: auto; }
 
-.flotte__note {
-  text-align: center; margin: 44px auto 0; max-width: 720px;
-  color: var(--gris); font-size: 0.95rem;
+.flotte__more {
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  text-align: center;
+  margin: 52px auto 0; max-width: 640px;
+  padding: 32px 36px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
 }
+
+.flotte__more p { font-size: 1.02rem; }
+
+.flotte__note {
+  text-align: center; margin: 34px auto 0; max-width: 720px;
+  color: var(--gris); font-size: 0.88rem;
+}
+
+.dashboard__confirm a { color: var(--or-clair); }
 
 /* ═══════════ SAVOIR-FAIRE ═══════════ */
 .savoir {
