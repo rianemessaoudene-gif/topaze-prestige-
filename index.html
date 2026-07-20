@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topaze Prestige — VTC d'exception à Marseille | Chauffeur privé haut de gamme</title>
+  <meta name="description" content="Topaze Prestige, chauffeur privé VTC haut de gamme à Marseille : BMW Série 7, Mercedes Classe V, Sprinter VIP, moto Honda Gold Wing. Transferts aéroport, gares, événements, 24h/7j." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════ FOND ANIMÉ ══════════ -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <header class="nav" id="nav">
+    <a href="#accueil" class="nav__logo">
+      <span class="nav__logo-gem" aria-hidden="true">◆</span>
+      <span class="nav__logo-text">TOPAZE <em>PRESTIGE</em></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#reservation">Réservation</a>
+      <a href="#flotte">Notre flotte</a>
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+33658969413" class="nav__cta">
+      <span class="nav__cta-dot" aria-hidden="true"></span> 24h/7j — 06 58 96 94 13
+    </a>
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ HERO + TABLEAU DE BORD DE RÉSERVATION ══════════ -->
+  <section class="hero" id="accueil">
+    <div class="hero__halo" aria-hidden="true"></div>
+
+    <div class="hero__intro reveal">
+      <p class="hero__kicker">— Chauffeur privé d'exception · Marseille —</p>
+      <h1 class="hero__title">
+        L'excellence du transport,<br />
+        <span class="gold-text">signée Topaze Prestige</span>
+      </h1>
+      <p class="hero__subtitle">
+        Berline BMW Série 7, vans Mercedes, Sprinter VIP et moto Gold Wing.
+        Chauffeurs en costume, ponctualité absolue. Votre course commence ici.
+      </p>
+    </div>
+
+    <!-- Tableau de bord -->
+    <div class="dashboard reveal" id="reservation">
+      <div class="dashboard__glow" aria-hidden="true"></div>
+      <div class="dashboard__header">
+        <h2 class="dashboard__title">Tableau de bord — Réservation</h2>
+        <span class="dashboard__badge"><span class="pulse-dot" aria-hidden="true"></span> Disponible 24h/7j</span>
+      </div>
+
+      <form class="dashboard__form" id="bookingForm" autocomplete="off">
+        <div class="field field--wide">
+          <label for="depart">Départ</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <input type="text" id="depart" name="depart" placeholder="Adresse, aéroport, gare…" required />
+          </div>
+        </div>
+
+        <div class="field field--wide">
+          <label for="arrivee">Arrivée</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v18h2v-7h5l1 2h6V6h-5l-1-2H5z"/></svg>
+            <input type="text" id="arrivee" name="arrivee" placeholder="Votre destination" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="date">Date</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm-2 8h14v10H5V10z"/></svg>
+            <input type="date" id="date" name="date" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="heure">Heure</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></svg>
+            <input type="time" id="heure" name="heure" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="vehicule">Véhicule</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v5h-2v2h-3v-2H8v2H5v-2H3v-5a2 2 0 0 1 2-2zm2.2 0h9.6l-1-3H8.2l-1 3zM6.5 16a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+            <select id="vehicule" name="vehicule">
+              <option value="bmw-serie-7">Berline — BMW Série 7</option>
+              <option value="mercedes-classe-v">Van — Mercedes Classe V</option>
+              <option value="sprinter-vip">Van VIP — Mercedes Sprinter</option>
+              <option value="gold-wing">Moto — Honda Gold Wing</option>
+              <option value="autre">Autre véhicule (nous appeler)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="passagers">Passagers</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-3.3 0-8 1.7-8 5v3h16v-3c0-3.3-4.7-5-8-5z"/></svg>
+            <select id="passagers" name="passagers">
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9</option><option>10</option><option>11</option><option>12</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="distance">Distance estimée (km)</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2A2.5 2.5 0 0 0 4 4.5c0 1.9 2.5 5 2.5 5S9 6.4 9 4.5A2.5 2.5 0 0 0 6.5 2zm11 10a2.5 2.5 0 0 0-2.5 2.5c0 1.9 2.5 5 2.5 5s2.5-3.1 2.5-5a2.5 2.5 0 0 0-2.5-2.5zM6 12v2a4 4 0 0 0 4 4h2v-2h-2a2 2 0 0 1-2-2v-2H6z"/></svg>
+            <input type="number" id="distance" name="distance" min="1" max="900" placeholder="ex : 25" />
+          </div>
+        </div>
+
+        <div class="dashboard__footer">
+          <div class="estimate" id="estimateBox" aria-live="polite">
+            <span class="estimate__label">Estimation de votre course</span>
+            <span class="estimate__value" id="estimateValue">— €</span>
+            <span class="estimate__note">Tarif indicatif, confirmé à la réservation</span>
+          </div>
+          <button type="submit" class="btn btn--gold btn--large">
+            Réserver ma course
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h12.2l-5.6-5.6L12 4l8 8-8 8-1.4-1.4 5.6-5.6H4v-2z"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <p class="dashboard__confirm" id="bookingConfirm" hidden>
+        ✦ Merci ! Votre demande a bien été enregistrée. Un chauffeur Topaze Prestige vous
+        confirme la course dans les plus brefs délais. Pour une réservation immédiate :
+        <a href="tel:+33658969413">06 58 96 94 13</a>.
+      </p>
+    </div>
+
+    <a href="#flotte" class="hero__scroll" aria-label="Découvrir la flotte">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ══════════ FLOTTE ══════════ -->
+  <section class="section flotte" id="flotte">
+    <div class="section__head reveal">
+      <p class="section__kicker">— Notre flotte —</p>
+      <h2 class="section__title">Des véhicules <span class="gold-text">à la hauteur de vos exigences</span></h2>
+      <p class="section__sub">Chaque véhicule est préparé avant chaque course : intérieur impeccable, eau fraîche, chargeurs et Wi-Fi à bord.</p>
+    </div>
+
+    <div class="flotte__grid">
+      <!-- BMW Série 7 -->
+      <article class="car-card car-card--featured reveal" data-vehicule="bmw-serie-7">
+        <span class="car-card__flag">Signature</span>
+        <div class="car-card__visual">
+          <img class="car-card__photo" src="assets/flotte/bmw-serie-7.jpg" alt="BMW Série 7 noire Topaze Prestige" loading="lazy" />
+          <svg class="car-svg" viewBox="0 0 340 168" aria-hidden="true">
+            <ellipse class="car-spot" cx="170" cy="140" rx="150" ry="12"/>
+            <path class="car-body" d="M26 128 C42 122 60 117 82 113 C100 88 130 72 166 70 C204 68 236 78 258 96 L300 104 C314 108 322 114 324 124 L324 132 L26 132 Z"/>
+            <path class="car-window" d="M120 106 C132 88 156 78 182 78 C210 78 232 88 246 100"/>
+            <path class="car-line" d="M120 106 L246 106 M182 78 L182 106"/>
+            <path class="car-line" d="M298 112 C304 112 310 114 312 118"/>
+            <path class="car-grille" d="M316 116 L322 116 M316 121 L322 121"/>
+            <circle class="car-light" cx="312" cy="112" r="2.6"/>
+            <circle class="car-light car-light--dim" cx="34" cy="122" r="2.4"/>
+            <circle class="car-wheel" cx="96" cy="132" r="17"/><circle class="car-wheel-in" cx="96" cy="132" r="8"/>
+            <path class="car-line" d="M96 124 L96 140 M88 132 L104 132"/>
+            <circle class="car-wheel" cx="262" cy="132" r="17"/><circle class="car-wheel-in" cx="262" cy="132" r="8"/>
+            <path class="car-line" d="M262 124 L262 140 M254 132 L270 132"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>BMW Série 7</h3>
+          <p class="car-card__model">Berline de prestige — finition Excellence</p>
+          <ul class="car-card__specs">
+            <li>3 passagers</li><li>3 bagages</li><li>Wi-Fi &amp; chargeurs</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>30&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>3,00&nbsp;€</strong></div>
+            <div><span>Aéroport Marseille-Provence</span><strong>dès 90&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--gold" data-select="bmw-serie-7">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- Mercedes Classe V -->
+      <article class="car-card reveal" data-vehicule="mercedes-classe-v">
+        <div class="car-card__visual">
+          <img class="car-card__photo" src="assets/flotte/mercedes-classe-v.jpg" alt="Mercedes Classe V noire Topaze Prestige" loading="lazy" />
+          <svg class="car-svg" viewBox="0 0 340 168" aria-hidden="true">
+            <ellipse class="car-spot" cx="170" cy="140" rx="150" ry="12"/>
+            <path class="car-body" d="M32 130 L32 94 C32 80 42 70 58 68 L226 62 C260 62 292 80 310 104 C318 114 320 122 320 130 L320 132 L32 132 Z"/>
+            <path class="car-window" d="M62 78 L222 72 C244 72 266 84 280 100 L228 102 L62 104 Z"/>
+            <path class="car-line" d="M118 74 L118 103 M174 72 L174 102 M228 71 L228 102"/>
+            <circle class="car-light" cx="308" cy="108" r="2.8"/>
+            <path class="car-line" d="M296 116 L314 116"/>
+            <circle class="car-wheel" cx="96" cy="132" r="17"/><circle class="car-wheel-in" cx="96" cy="132" r="8"/>
+            <path class="car-line" d="M96 124 L96 140 M88 132 L104 132"/>
+            <circle class="car-wheel" cx="258" cy="132" r="17"/><circle class="car-wheel-in" cx="258" cy="132" r="8"/>
+            <path class="car-line" d="M258 124 L258 140 M250 132 L266 132"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Mercedes Classe V</h3>
+          <p class="car-card__model">Van premium — confort familial &amp; affaires</p>
+          <ul class="car-card__specs">
+            <li>7 passagers</li><li>8 bagages</li><li>Espace salon</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>25&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>2,80&nbsp;€</strong></div>
+            <div><span>Aéroport Marseille-Provence</span><strong>dès 100&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="mercedes-classe-v">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- Mercedes Sprinter VIP -->
+      <article class="car-card reveal" data-vehicule="sprinter-vip">
+        <div class="car-card__visual">
+          <img class="car-card__photo" src="assets/flotte/sprinter-vip.jpg" alt="Mercedes Sprinter VIP noir Topaze Prestige" loading="lazy" />
+          <svg class="car-svg" viewBox="0 0 340 168" aria-hidden="true">
+            <ellipse class="car-spot" cx="170" cy="140" rx="152" ry="12"/>
+            <path class="car-body" d="M28 130 L28 62 C28 50 36 42 50 42 L242 40 C262 40 280 50 296 72 C310 90 316 106 318 120 C319 126 319 130 319 130 L28 132 Z"/>
+            <path class="car-window" d="M52 52 L240 50 C256 50 270 60 282 76 L246 78 L52 80 Z"/>
+            <path class="car-line" d="M100 51 L100 79 M148 51 L148 79 M196 50 L196 78 M246 50 L246 78"/>
+            <path class="car-line" d="M28 100 L310 100"/>
+            <circle class="car-light" cx="306" cy="102" r="2.8"/>
+            <circle class="car-wheel" cx="92" cy="132" r="17"/><circle class="car-wheel-in" cx="92" cy="132" r="8"/>
+            <path class="car-line" d="M92 124 L92 140 M84 132 L100 132"/>
+            <circle class="car-wheel" cx="252" cy="132" r="17"/><circle class="car-wheel-in" cx="252" cy="132" r="8"/>
+            <path class="car-line" d="M252 124 L252 140 M244 132 L260 132"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Mercedes Sprinter VIP</h3>
+          <p class="car-card__model">Van VIP grande capacité — groupes &amp; événements</p>
+          <ul class="car-card__specs">
+            <li>Jusqu'à 12 passagers</li><li>Salon VIP</li><li>Grand volume bagages</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>40&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>3,50&nbsp;€</strong></div>
+            <div><span>Aéroport Marseille-Provence</span><strong>dès 150&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="sprinter-vip">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- Honda Gold Wing -->
+      <article class="car-card reveal" data-vehicule="gold-wing">
+        <span class="car-card__flag car-card__flag--dark">Moto taxi</span>
+        <div class="car-card__visual">
+          <img class="car-card__photo" src="assets/flotte/gold-wing.jpg" alt="Moto Honda Gold Wing noire Topaze Prestige" loading="lazy" />
+          <svg class="car-svg" viewBox="0 0 340 168" aria-hidden="true">
+            <ellipse class="car-spot" cx="170" cy="150" rx="140" ry="11"/>
+            <circle class="car-wheel" cx="92" cy="120" r="24"/><circle class="car-wheel-in" cx="92" cy="120" r="10"/>
+            <path class="car-line" d="M92 110 L92 130 M82 120 L102 120"/>
+            <circle class="car-wheel" cx="248" cy="120" r="24"/><circle class="car-wheel-in" cx="248" cy="120" r="10"/>
+            <path class="car-line" d="M248 110 L248 130 M238 120 L258 120"/>
+            <path class="car-body" d="M246 116 L218 56"/>
+            <path class="car-body" d="M218 56 L204 46"/>
+            <circle class="car-light" cx="202" cy="45" r="2.2"/>
+            <path class="car-body" d="M222 100 A 34 34 0 0 1 274 100"/>
+            <path class="car-body" d="M216 54 L226 22 Q232 16 234 24 L226 50 Z"/>
+            <path class="car-window" d="M221 46 L229 25"/>
+            <path class="car-body" d="M100 86 Q126 76 152 80 Q184 84 206 70 L216 54"/>
+            <path class="car-body" d="M100 86 L94 62 Q94 54 104 54 L126 56 Q132 56 130 64 L128 76 Q114 78 100 86 Z"/>
+            <path class="car-body" d="M152 80 L156 100 Q170 108 190 106 Q202 104 208 96 L214 84"/>
+            <path class="car-line" d="M160 104 L204 102 M128 76 L152 80"/>
+            <circle class="car-light" cx="262" cy="86" r="2.8"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Honda Gold Wing</h3>
+          <p class="car-card__model">Moto taxi — la rapidité, sans compromis sur le confort</p>
+          <ul class="car-card__specs">
+            <li>1 passager</li><li>Casque &amp; équipement fournis</li><li>Idéal trafic dense</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>20&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>2,00&nbsp;€</strong></div>
+            <div><span>Aéroport Marseille-Provence</span><strong>dès 60&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="gold-wing">Réserver ce véhicule</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="flotte__more reveal">
+      <p>Vous recherchez <strong class="gold-text">un autre véhicule</strong> ? Notre réseau de partenaires nous permet de répondre à toutes vos demandes.</p>
+      <a href="tel:+33658969413" class="btn btn--outline">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        Appelez-nous — 06 58 96 94 13
+      </a>
+    </div>
+
+    <p class="flotte__note reveal">Mise à disposition avec chauffeur : devis personnalisé pour vos événements, mariages et déplacements professionnels. Tarifs indicatifs, confirmés à la réservation.</p>
+  </section>
+
+  <!-- ══════════ SAVOIR-FAIRE ══════════ -->
+  <section class="section savoir" id="savoir-faire">
+    <div class="savoir__grid">
+      <figure class="savoir__photo reveal">
+        <div class="savoir__photo-frame" aria-hidden="true"></div>
+        <img
+          id="chauffeurPhoto"
+          src="assets/chauffeur.jpg"
+          alt="Chauffeur Topaze Prestige en costume noir ajustant sa veste"
+          loading="lazy"
+        />
+        <figcaption>Votre chauffeur, en costume, à votre porte.</figcaption>
+      </figure>
+
+      <div class="savoir__content reveal">
+        <p class="section__kicker">— Le métier, le savoir-faire —</p>
+        <h2 class="section__title">Un art du service, <span class="gold-text">cultivé à chaque course</span></h2>
+        <p class="savoir__text">
+          Chez Topaze Prestige, le transport est un métier d'exigence. Nos chauffeurs,
+          en costume noir, formés aux codes de la conciergerie de luxe, font de chaque
+          trajet un moment de sérénité : accueil personnalisé, aide aux bagages,
+          conduite souple et discrétion absolue.
+        </p>
+        <ul class="savoir__points">
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Ponctualité garantie</strong><p>Suivi des vols et trains en temps réel, votre chauffeur vous attend, jamais l'inverse.</p></div>
+          </li>
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Discrétion &amp; confidentialité</strong><p>Un service pensé pour les dirigeants, artistes et clientèle exigeante.</p></div>
+          </li>
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Excellence à bord</strong><p>Véhicules récents, eau fraîche, presse, chargeurs et Wi-Fi offerts.</p></div>
+          </li>
+        </ul>
+        <div class="savoir__stats">
+          <div><strong class="gold-text" data-count="4.9">0</strong><span>/5 satisfaction client</span></div>
+          <div><strong class="gold-text" data-count="12000">0</strong><span>courses réalisées</span></div>
+          <div><strong class="gold-text" data-count="24">0</strong><span>h/24 — 7j/7</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT / FOOTER ══════════ -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-gem" aria-hidden="true">◆</span>
+        <span class="nav__logo-text">TOPAZE <em>PRESTIGE</em></span>
+        <p>Chauffeur privé haut de gamme — Marseille &amp; région.<br />Transferts aéroports, gares, événements, mise à disposition.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="tel:+33658969413">06 58 96 94 13</a>
+        <a href="mailto:topazeprestige@gmail.com">topazeprestige@gmail.com</a>
+        <span>Le Canet — 13014 Marseille</span>
+        <span>Disponible 24h/24 — 7j/7</span>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <a href="#reservation">Réserver une course</a>
+        <a href="#flotte">Notre flotte &amp; tarifs</a>
+        <a href="#savoir-faire">Notre savoir-faire</a>
+      </div>
+    </div>
+    <p class="footer__legal">© 2026 Topaze Prestige — VTC enregistré au registre des exploitants. Tarifs indicatifs, confirmés à la réservation.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
