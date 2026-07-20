@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topaze Prestige — VTC d'exception | Chauffeur privé haut de gamme</title>
+  <meta name="description" content="Topaze Prestige, service de chauffeur privé VTC haut de gamme. Réservez votre course en berline ou van de luxe : transferts aéroports, gares, mise à disposition, événements." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════ FOND ANIMÉ ══════════ -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <header class="nav" id="nav">
+    <a href="#accueil" class="nav__logo">
+      <span class="nav__logo-gem" aria-hidden="true">◆</span>
+      <span class="nav__logo-text">TOPAZE <em>PRESTIGE</em></span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#reservation">Réservation</a>
+      <a href="#flotte">Notre flotte</a>
+      <a href="#savoir-faire">Savoir-faire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+33600000000" class="nav__cta">
+      <span class="nav__cta-dot" aria-hidden="true"></span> 24h/7j — 06 00 00 00 00
+    </a>
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ══════════ HERO + TABLEAU DE BORD DE RÉSERVATION ══════════ -->
+  <section class="hero" id="accueil">
+    <div class="hero__halo" aria-hidden="true"></div>
+
+    <div class="hero__intro reveal">
+      <p class="hero__kicker">— Chauffeur privé d'exception —</p>
+      <h1 class="hero__title">
+        L'excellence du transport,<br />
+        <span class="gold-text">signée Topaze Prestige</span>
+      </h1>
+      <p class="hero__subtitle">
+        Berlines &amp; vans haut de gamme, chauffeurs en costume, ponctualité absolue.
+        Votre course commence ici.
+      </p>
+    </div>
+
+    <!-- Tableau de bord -->
+    <div class="dashboard reveal" id="reservation">
+      <div class="dashboard__glow" aria-hidden="true"></div>
+      <div class="dashboard__header">
+        <h2 class="dashboard__title">Tableau de bord — Réservation</h2>
+        <span class="dashboard__badge"><span class="pulse-dot" aria-hidden="true"></span> Disponible 24h/7j</span>
+      </div>
+
+      <form class="dashboard__form" id="bookingForm" autocomplete="off">
+        <div class="field field--wide">
+          <label for="depart">Départ</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <input type="text" id="depart" name="depart" placeholder="Adresse, aéroport, gare…" required />
+          </div>
+        </div>
+
+        <div class="field field--wide">
+          <label for="arrivee">Arrivée</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v18h2v-7h5l1 2h6V6h-5l-1-2H5z"/></svg>
+            <input type="text" id="arrivee" name="arrivee" placeholder="Votre destination" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="date">Date</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm-2 8h14v10H5V10z"/></svg>
+            <input type="date" id="date" name="date" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="heure">Heure</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></svg>
+            <input type="time" id="heure" name="heure" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="vehicule">Véhicule</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v5h-2v2h-3v-2H8v2H5v-2H3v-5a2 2 0 0 1 2-2zm2.2 0h9.6l-1-3H8.2l-1 3zM6.5 16a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+            <select id="vehicule" name="vehicule">
+              <option value="berline-affaires">Berline Affaires</option>
+              <option value="berline-prestige">Berline Prestige</option>
+              <option value="van-premium">Van Premium (7 places)</option>
+              <option value="suv-prestige">SUV Prestige</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="passagers">Passagers</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-3.3 0-8 1.7-8 5v3h16v-3c0-3.3-4.7-5-8-5z"/></svg>
+            <select id="passagers" name="passagers">
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="distance">Distance estimée (km)</label>
+          <div class="field__input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2A2.5 2.5 0 0 0 4 4.5c0 1.9 2.5 5 2.5 5S9 6.4 9 4.5A2.5 2.5 0 0 0 6.5 2zm11 10a2.5 2.5 0 0 0-2.5 2.5c0 1.9 2.5 5 2.5 5s2.5-3.1 2.5-5a2.5 2.5 0 0 0-2.5-2.5zM6 12v2a4 4 0 0 0 4 4h2v-2h-2a2 2 0 0 1-2-2v-2H6z"/></svg>
+            <input type="number" id="distance" name="distance" min="1" max="900" placeholder="ex : 25" />
+          </div>
+        </div>
+
+        <div class="dashboard__footer">
+          <div class="estimate" id="estimateBox" aria-live="polite">
+            <span class="estimate__label">Estimation de votre course</span>
+            <span class="estimate__value" id="estimateValue">— €</span>
+            <span class="estimate__note">Tarif indicatif, confirmé à la réservation</span>
+          </div>
+          <button type="submit" class="btn btn--gold btn--large">
+            Réserver ma course
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h12.2l-5.6-5.6L12 4l8 8-8 8-1.4-1.4 5.6-5.6H4v-2z"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <p class="dashboard__confirm" id="bookingConfirm" hidden>
+        ✦ Merci ! Votre demande a bien été enregistrée. Un chauffeur Topaze Prestige vous
+        confirme la course par SMS dans les plus brefs délais.
+      </p>
+    </div>
+
+    <a href="#flotte" class="hero__scroll" aria-label="Découvrir la flotte">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ══════════ FLOTTE ══════════ -->
+  <section class="section flotte" id="flotte">
+    <div class="section__head reveal">
+      <p class="section__kicker">— Notre flotte —</p>
+      <h2 class="section__title">Des véhicules <span class="gold-text">à la hauteur de vos exigences</span></h2>
+      <p class="section__sub">Chaque véhicule est préparé avant chaque course : intérieur impeccable, eau fraîche, chargeurs et Wi-Fi à bord.</p>
+    </div>
+
+    <div class="flotte__grid">
+      <!-- Berline Affaires -->
+      <article class="car-card reveal" data-vehicule="berline-affaires">
+        <div class="car-card__visual">
+          <svg class="car-svg" viewBox="0 0 320 120" aria-hidden="true">
+            <path class="car-body" d="M18 88 C30 84 44 80 62 76 C80 60 104 46 138 44 C176 42 208 50 228 64 L272 72 C290 76 300 80 302 88 L302 92 L18 92 Z"/>
+            <circle class="car-wheel" cx="82" cy="92" r="14"/><circle class="car-wheel-in" cx="82" cy="92" r="6"/>
+            <circle class="car-wheel" cx="244" cy="92" r="14"/><circle class="car-wheel-in" cx="244" cy="92" r="6"/>
+            <path class="car-line" d="M120 52 C150 48 190 52 214 62"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Berline Affaires</h3>
+          <p class="car-card__model">Mercedes Classe E &amp; équivalents</p>
+          <ul class="car-card__specs">
+            <li>3 passagers</li><li>3 bagages</li><li>Wi-Fi &amp; chargeurs</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>20&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>2,20&nbsp;€</strong></div>
+            <div><span>Transfert aéroport</span><strong>dès 85&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="berline-affaires">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- Berline Prestige -->
+      <article class="car-card car-card--featured reveal" data-vehicule="berline-prestige">
+        <span class="car-card__flag">Signature</span>
+        <div class="car-card__visual">
+          <svg class="car-svg" viewBox="0 0 320 120" aria-hidden="true">
+            <path class="car-body" d="M14 88 C28 84 42 80 60 77 C76 60 102 44 140 42 C182 40 216 50 238 66 L276 73 C294 77 304 81 306 88 L306 92 L14 92 Z"/>
+            <circle class="car-wheel" cx="84" cy="92" r="14"/><circle class="car-wheel-in" cx="84" cy="92" r="6"/>
+            <circle class="car-wheel" cx="248" cy="92" r="14"/><circle class="car-wheel-in" cx="248" cy="92" r="6"/>
+            <path class="car-line" d="M118 50 C152 45 196 50 224 64"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Berline Prestige</h3>
+          <p class="car-card__model">Mercedes Classe S &amp; équivalents</p>
+          <ul class="car-card__specs">
+            <li>3 passagers</li><li>3 bagages</li><li>Sièges massants</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>30&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>3,00&nbsp;€</strong></div>
+            <div><span>Transfert aéroport</span><strong>dès 120&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--gold" data-select="berline-prestige">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- Van Premium -->
+      <article class="car-card reveal" data-vehicule="van-premium">
+        <div class="car-card__visual">
+          <svg class="car-svg" viewBox="0 0 320 120" aria-hidden="true">
+            <path class="car-body" d="M24 90 L24 58 C24 46 34 38 48 36 L216 32 C248 32 278 48 296 68 C302 76 304 84 304 90 L304 92 L24 92 Z"/>
+            <circle class="car-wheel" cx="84" cy="92" r="14"/><circle class="car-wheel-in" cx="84" cy="92" r="6"/>
+            <circle class="car-wheel" cx="248" cy="92" r="14"/><circle class="car-wheel-in" cx="248" cy="92" r="6"/>
+            <path class="car-line" d="M52 44 L212 40"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>Van Premium</h3>
+          <p class="car-card__model">Mercedes Classe V &amp; équivalents</p>
+          <ul class="car-card__specs">
+            <li>7 passagers</li><li>8 bagages</li><li>Espace salon</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>25&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>2,80&nbsp;€</strong></div>
+            <div><span>Transfert aéroport</span><strong>dès 110&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="van-premium">Réserver ce véhicule</a>
+        </div>
+      </article>
+
+      <!-- SUV Prestige -->
+      <article class="car-card reveal" data-vehicule="suv-prestige">
+        <div class="car-card__visual">
+          <svg class="car-svg" viewBox="0 0 320 120" aria-hidden="true">
+            <path class="car-body" d="M18 88 C28 84 40 82 56 78 C68 58 92 42 130 40 L200 40 C232 42 262 56 284 72 C296 78 302 82 304 88 L304 92 L18 92 Z"/>
+            <circle class="car-wheel" cx="86" cy="92" r="15"/><circle class="car-wheel-in" cx="86" cy="92" r="6.5"/>
+            <circle class="car-wheel" cx="246" cy="92" r="15"/><circle class="car-wheel-in" cx="246" cy="92" r="6.5"/>
+            <path class="car-line" d="M112 48 L206 46"/>
+          </svg>
+        </div>
+        <div class="car-card__body">
+          <h3>SUV Prestige</h3>
+          <p class="car-card__model">Range Rover, BMW X7 &amp; équivalents</p>
+          <ul class="car-card__specs">
+            <li>4 passagers</li><li>4 bagages</li><li>Confort supérieur</li>
+          </ul>
+          <div class="car-card__tarifs">
+            <div><span>Prise en charge</span><strong>30&nbsp;€</strong></div>
+            <div><span>Prix au km</span><strong>3,20&nbsp;€</strong></div>
+            <div><span>Transfert aéroport</span><strong>dès 130&nbsp;€</strong></div>
+          </div>
+          <a href="#reservation" class="btn btn--outline" data-select="suv-prestige">Réserver ce véhicule</a>
+        </div>
+      </article>
+    </div>
+
+    <p class="flotte__note reveal">Mise à disposition avec chauffeur : à partir de <strong class="gold-text">65&nbsp;€ / heure</strong> — devis personnalisé pour vos événements, mariages et déplacements professionnels.</p>
+  </section>
+
+  <!-- ══════════ SAVOIR-FAIRE ══════════ -->
+  <section class="section savoir" id="savoir-faire">
+    <div class="savoir__grid">
+      <figure class="savoir__photo reveal">
+        <div class="savoir__photo-frame" aria-hidden="true"></div>
+        <img
+          id="chauffeurPhoto"
+          src="assets/chauffeur.jpg"
+          alt="Chauffeur Topaze Prestige en costume noir ajustant sa veste"
+          loading="lazy"
+        />
+        <figcaption>Votre chauffeur, en costume, à votre porte.</figcaption>
+      </figure>
+
+      <div class="savoir__content reveal">
+        <p class="section__kicker">— Le métier, le savoir-faire —</p>
+        <h2 class="section__title">Un art du service, <span class="gold-text">cultivé à chaque course</span></h2>
+        <p class="savoir__text">
+          Chez Topaze Prestige, le transport est un métier d'exigence. Nos chauffeurs,
+          en costume noir, formés aux codes de la conciergerie de luxe, font de chaque
+          trajet un moment de sérénité : accueil personnalisé, aide aux bagages,
+          conduite souple et discrétion absolue.
+        </p>
+        <ul class="savoir__points">
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Ponctualité garantie</strong><p>Suivi des vols et trains en temps réel, votre chauffeur vous attend, jamais l'inverse.</p></div>
+          </li>
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Discrétion &amp; confidentialité</strong><p>Un service pensé pour les dirigeants, artistes et clientèle exigeante.</p></div>
+          </li>
+          <li>
+            <span class="savoir__point-icon" aria-hidden="true">◆</span>
+            <div><strong>Excellence à bord</strong><p>Véhicules récents, eau fraîche, presse, chargeurs et Wi-Fi offerts.</p></div>
+          </li>
+        </ul>
+        <div class="savoir__stats">
+          <div><strong class="gold-text" data-count="4.9">0</strong><span>/5 satisfaction client</span></div>
+          <div><strong class="gold-text" data-count="12000">0</strong><span>courses réalisées</span></div>
+          <div><strong class="gold-text" data-count="24">0</strong><span>h/24 — 7j/7</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT / FOOTER ══════════ -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-gem" aria-hidden="true">◆</span>
+        <span class="nav__logo-text">TOPAZE <em>PRESTIGE</em></span>
+        <p>Chauffeur privé haut de gamme — Paris &amp; Île-de-France.<br />Transferts aéroports, gares, événements, mise à disposition.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="tel:+33600000000">06 00 00 00 00</a>
+        <a href="mailto:contact@topaze-prestige.fr">contact@topaze-prestige.fr</a>
+        <span>Disponible 24h/24 — 7j/7</span>
+      </div>
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <a href="#reservation">Réserver une course</a>
+        <a href="#flotte">Notre flotte &amp; tarifs</a>
+        <a href="#savoir-faire">Notre savoir-faire</a>
+      </div>
+    </div>
+    <p class="footer__legal">© 2026 Topaze Prestige — VTC enregistré au registre des exploitants. Tarifs indicatifs, confirmés à la réservation.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
