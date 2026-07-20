@@ -2,16 +2,6 @@
    TOPAZE PRESTIGE — interactions
    ═══════════════════════════════════════════════ */
 
-/* ── Grille tarifaire (à ajuster librement) ──
-   priseEnCharge : € au départ
-   parKm         : € par kilomètre
-   minimum       : prix minimum d'une course */
-const TARIFS = {
-  "bmw-serie-7":       { priseEnCharge: 30, parKm: 3.0, minimum: 70 },
-  "mercedes-classe-v": { priseEnCharge: 25, parKm: 2.8, minimum: 65 },
-  "sprinter-vip":      { priseEnCharge: 40, parKm: 3.5, minimum: 100 },
-  "gold-wing":         { priseEnCharge: 20, parKm: 2.0, minimum: 40 },
-};
 
 /* ── Navigation ── */
 const nav = document.getElementById("nav");
@@ -41,23 +31,6 @@ const distanceInput = document.getElementById("distance");
 const estimateValue = document.getElementById("estimateValue");
 const confirmBox = document.getElementById("bookingConfirm");
 
-function updateEstimate() {
-  if (vehiculeSelect.value === "autre") {
-    estimateValue.textContent = "Sur devis";
-    return;
-  }
-  const tarif = TARIFS[vehiculeSelect.value];
-  const km = parseFloat(distanceInput.value);
-  if (!tarif || !km || km <= 0) {
-    estimateValue.textContent = "— €";
-    return;
-  }
-  const prix = Math.max(tarif.priseEnCharge + km * tarif.parKm, tarif.minimum);
-  estimateValue.textContent = Math.round(prix) + " €";
-}
-
-vehiculeSelect.addEventListener("change", updateEstimate);
-distanceInput.addEventListener("input", updateEstimate);
 
 /* Date minimale = aujourd'hui */
 const dateInput = document.getElementById("date");
@@ -79,7 +52,6 @@ form.addEventListener("submit", (e) => {
     "• Véhicule : " + vehiculeLabel,
     "• Passagers : " + data.get("passagers"),
     data.get("distance") ? "• Distance estimée : " + data.get("distance") + " km" : null,
-    estimateValue.textContent !== "— €" ? "• Estimation affichée : " + estimateValue.textContent : null,
     "",
     "Merci de me confirmer la disponibilité.",
   ].filter(Boolean);
@@ -97,8 +69,33 @@ form.addEventListener("submit", (e) => {
 document.querySelectorAll("[data-select]").forEach((btn) => {
   btn.addEventListener("click", () => {
     vehiculeSelect.value = btn.dataset.select;
-    updateEstimate();
   });
+});
+
+
+/* ── Rotation 3D des véhicules (souris et tactile) ── */
+document.querySelectorAll(".car-card__visual").forEach((visual) => {
+  const stage = visual.querySelector(".car-card__stage");
+  if (!stage) return;
+
+  const rotate = (clientX, clientY) => {
+    const r = visual.getBoundingClientRect();
+    const px = (clientX - r.left) / r.width - 0.5;
+    const py = (clientY - r.top) / r.height - 0.5;
+    stage.style.transform =
+      "rotateY(" + (px * 42).toFixed(1) + "deg) " +
+      "rotateX(" + (-py * 22).toFixed(1) + "deg) scale(1.07)";
+  };
+
+  const reset = () => { stage.style.transform = ""; };
+
+  visual.addEventListener("mousemove", (e) => rotate(e.clientX, e.clientY));
+  visual.addEventListener("mouseleave", reset);
+  visual.addEventListener("touchmove", (e) => {
+    const t = e.touches[0];
+    if (t) rotate(t.clientX, t.clientY);
+  }, { passive: true });
+  visual.addEventListener("touchend", reset);
 });
 
 /* ── Photos des véhicules : affichées si présentes dans assets/flotte/ ── */
