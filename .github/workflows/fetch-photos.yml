@@ -32,19 +32,9 @@ jobs:
               "https://commons.wikimedia.org/w/api.php?action=query&titles=File:${enc}&prop=imageinfo&iiprop=extmetadata%7Curl&format=json" || true
           }
 
-          fetch bmw-1.jpg "BMW 7-Series (G70) 750e 1X7A1895.jpg"
-          fetch bmw-2.jpg "BMW 7-Series (G70) 750e IMG 9358.jpg"
-          fetch bmw-3.jpg "BMW 7 Series (G70).jpg"
-          fetch bmw-4.jpg "BMW G70 740d 1X7A7230.jpg"
-          fetch classev-1.jpg "Mercedes-Benz V-class Black.jpg"
-          fetch classev-2.jpg "Blacklane Mercedes-Benz V-Class (1) ITB 2017.JPG"
-          fetch classev-3.jpg "2023 Mercedes-Benz V-Class 300d (W447) IMG 9814.jpg"
-          fetch sprinter-1.jpg "Mercedes-Benz Sprinter VS30 317 CDI Black - rear.jpg"
-          fetch sprinter-2.jpg "Mercedes-Benz Sprinter VS30 317 CDI Black - front.jpg"
-          fetch sprinter-3.png "Mercedes-Benz Sprinter Black.png"
-          fetch goldwing-1.jpg "Honda Gold Wing GL 1800 (SC79 - 2018).jpg"
-          fetch goldwing-2.jpg "Honda Gold Wing 1800 2017.jpg"
-          fetch goldwing-3.jpg "Honda Gold Wing GL1800 - Indonesia International Motor Show 2018 - April 26 2018.jpg"
+          curl -sSL -A "$UA" -o assets/flotte/raw/goldwing-1.jpg "https://upload.wikimedia.org/wikipedia/commons/7/7d/Honda_Gold_Wing_GL_1800_%28SC79_-_2018%29.jpg"
+          curl -sSL -A "$UA" -o assets/flotte/raw/goldwing-2.jpg "https://upload.wikimedia.org/wikipedia/commons/0/0d/Honda_Gold_Wing_1800_2017.jpg"
+          curl -sSL -A "$UA" -o assets/flotte/raw/goldwing-3.jpg "https://upload.wikimedia.org/wikipedia/commons/6/6f/Honda_Gold_Wing_GL1800_-_Indonesia_International_Motor_Show_2018_-_April_26_2018.jpg"
 
           ls -la assets/flotte/raw/
 
