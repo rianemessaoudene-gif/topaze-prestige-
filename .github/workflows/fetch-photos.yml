@@ -1,0 +1,54 @@
+name: Récupération des photos de la flotte
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Téléchargement depuis Wikimedia Commons
+        run: |
+          set -x
+          mkdir -p assets/flotte/raw
+          UA="TopazePrestigeSite/1.0 (https://github.com/rianemessaoudene-gif/topaze-prestige-; topazeprestige@gmail.com)"
+
+          fetch() {
+            local out="$1" file="$2"
+            local enc
+            enc=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$file")
+            curl -sSL -A "$UA" -o "assets/flotte/raw/${out}" \
+              "https://commons.wikimedia.org/wiki/Special:FilePath/${enc}?width=1600" || true
+            curl -sSL -A "$UA" -o "assets/flotte/raw/${out}.json" \
+              "https://commons.wikimedia.org/w/api.php?action=query&titles=File:${enc}&prop=imageinfo&iiprop=extmetadata%7Curl&format=json" || true
+          }
+
+          fetch bmw-1.jpg "BMW 7-Series (G70) 750e 1X7A1895.jpg"
+          fetch bmw-2.jpg "BMW 7-Series (G70) 750e IMG 9358.jpg"
+          fetch bmw-3.jpg "BMW 7 Series (G70).jpg"
+          fetch bmw-4.jpg "BMW G70 740d 1X7A7230.jpg"
+          fetch classev-1.jpg "Mercedes-Benz V-class Black.jpg"
+          fetch classev-2.jpg "Blacklane Mercedes-Benz V-Class (1) ITB 2017.JPG"
+          fetch classev-3.jpg "2023 Mercedes-Benz V-Class 300d (W447) IMG 9814.jpg"
+          fetch sprinter-1.jpg "Mercedes-Benz Sprinter VS30 317 CDI Black - rear.jpg"
+          fetch sprinter-2.jpg "Mercedes-Benz Sprinter VS30 317 CDI Black - front.jpg"
+          fetch sprinter-3.png "Mercedes-Benz Sprinter Black.png"
+          fetch goldwing-1.jpg "Honda Gold Wing GL 1800 (SC79 - 2018).jpg"
+          fetch goldwing-2.jpg "Honda Gold Wing 1800 2017.jpg"
+          fetch goldwing-3.jpg "Honda Gold Wing GL1800 - Indonesia International Motor Show 2018 - April 26 2018.jpg"
+
+          ls -la assets/flotte/raw/
+
+      - name: Commit et push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/flotte/raw
+          git commit -m "Photos candidates de la flotte (Wikimedia Commons) + métadonnées de licence" || echo "rien à committer"
+          git push
