@@ -2,6 +2,9 @@ name: Récupération des photos de la flotte
 
 on:
   workflow_dispatch:
+  push:
+    branches: [claude/topaze-prestige-vtc-site-h0r2j7]
+    paths: ['.github/workflows/fetch-photos.yml']
 
 permissions:
   contents: write
